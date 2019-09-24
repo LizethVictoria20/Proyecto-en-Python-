@@ -1,73 +1,81 @@
+from os import system
 from pelicula import Pelicula
 from peliculaPrestada import PeliculaPrestada
 
-
-class Menu():
-    def __init__(self, PeliculaPrestada):
-        self.peliculaPrestada = PeliculaPrestada
-
+class Menu:
+    def __init__(self, peliculaPrestada):
+        self.peliculaPrestada = peliculaPrestada
 
     def adicionar_pelicula(self):
-        print('Agrega una pelicula')
-        codigo = input('Agrega el codigo de la pelicula: ')
-        nombre = input('Agrega el nombre de la pelicula: ')
-
+        print('Agregar Pelicula')
+        codigo = input('Digite el codigo de la pelicula: ')
+        nombre = input('Digite el nombre de la pelicula: ')
+        
         pelicula = Pelicula(codigo, nombre)
-
+        
         if self.peliculaPrestada.adicionar_pelicula(pelicula):
             print('Registro exitoso')
+            input()
+        
         else:
             print('Registro fail')
 
-    
-    def listar_peliculas(self):
-        print('Listar Socios')
-        self.peliculaPrestada.listar_peliculas()
+    def listar_pelicula(self):
+        system("clear")
+        print('*********')
+        print('Listar peliculas')
+
+        self.peliculaPrestada.listar_pelicula()
         input()
-    
-    
+
     def eliminar_pelicula(self):
-        print('Eliminar Pelicula')
-        codigo = print('Digite el codigo de la pelicula')
+        system("clear")
+        print('*******')
+        print('Eliminar pelicula')
 
+        codigo = input('Digite el numero de la pelicula: ')
         if self.peliculaPrestada.eliminar_pelicula(codigo):
-            print('La pelicula fue eliminada exitosamente')
+            print('La pelicula fue eliminada')
         else:
-            print('La pelicula no pudo ser eliminada')
+            print('La pelicula no fue eliminada')
 
-    
+
     def menu_principal(self):
+        
         while True:
+            system("clear") 
+            print('********')
             print('Menu Principal')
-            print('1: Agregar pelicula')
-            print('2: Listar pelicula')
-            print('3: Eliminar pelicula')
+            print('1: Crear Pelicula')
+            print('2: Listar Peliculas')
+            print('3: Eliminar Pelicula')
             print('4: Salir')
 
             try:
-                opcion = print('Digite la opcion: ')
+                op = int(input('Digite la opcion: '))
 
-                if opcion == 1:
+                if op == 1:
                     self.adicionar_pelicula()
-
-                elif opcion == 2:
-                    self.listar_peliculas()
-
-                elif opcion == 3:
-                    self.eliminar_pelicula()
                 
-                elif opcion == 4:
+                elif op == 2:
+                    self.listar_pelicula()
+
+                elif op == 3:
+                    self.eliminar_pelicula()
+
+                elif op == 4:
                     break
 
+                else:
+                    print('Digite una opcion valida')
+                    input()
+            
             except ValueError:
                 print('Digite un numero entero')
-
+                input()
 
 if __name__ == '__main__':
     peliculaPrestada = PeliculaPrestada('...')
     menu = Menu(peliculaPrestada)
     menu.menu_principal()
-
-
-
-
+                    
