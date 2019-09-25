@@ -1,6 +1,7 @@
 from os import system
 from socio import Socio
 from videoclub import Videoclub
+from pelicula import Pelicula
 
 class Menu:
     def __init__(self, videoclub):
@@ -41,6 +42,44 @@ class Menu:
         else:
             print('El socio no fue eliminado')
 
+    #============PELICULA===============#
+
+    def adicionar_pelicula(self):
+        print('Agregar Pelicula')
+        codigo = input('Digite el codigo de la pelicula: ')
+        nombre = input('Digite el nombre de la pelicula: ')
+        
+        pelicula = Pelicula(codigo, nombre)
+        
+        if self.videoclub.adicionar_pelicula(pelicula):
+            print('Registro exitoso')
+            input()
+        
+        else:
+            print('Registro fail')
+
+    def listar_pelicula(self):
+        system("clear")
+        print('*********')
+        print('Listar peliculas')
+
+        self.videoclub.listar_pelicula()
+        input()
+
+    def eliminar_pelicula(self):
+        system("clear")
+        print('*******')
+        print('Eliminar pelicula')
+
+        codigo = input('Digite el numero de la pelicula: ')
+        if self.videoclub.eliminar_pelicula(codigo):
+            print('La pelicula fue eliminada')
+        else:
+            print('La pelicula no fue eliminada')
+
+
+
+    #=============MENU===============#
 
     def mostrar_menu_principal(self):
         
@@ -51,7 +90,10 @@ class Menu:
             print('1: Crear Socio')
             print('2: Listar Socios')
             print('3: Eliminar socio')
-            print('4: Salir')
+            print('4: Crear Pelicula')
+            print('5: Listar Peliculas')
+            print('6: Eliminar Pelicula')
+            print('7: Salir')
 
             try:
                 op = int(input('Digite la opcion: '))
@@ -64,8 +106,17 @@ class Menu:
 
                 elif op == 3:
                     self.eliminar_socio()
-
+                
                 elif op == 4:
+                    self.adicionar_pelicula()
+                
+                elif op == 5:
+                    self.listar_pelicula()
+
+                elif op == 6:
+                    self.eliminar_pelicula()
+
+                elif op == 7:
                     break
 
                 else:
