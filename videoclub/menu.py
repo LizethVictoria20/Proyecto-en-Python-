@@ -48,8 +48,9 @@ class Menu:
         print('Agregar Pelicula')
         codigo = input('Digite el codigo de la pelicula: ')
         nombre = input('Digite el nombre de la pelicula: ')
+        genero = input('Digite el genero de la pelicula: ')
         
-        pelicula = Pelicula(codigo, nombre)
+        pelicula = Pelicula(codigo, nombre, genero)
         
         if self.videoclub.adicionar_pelicula(pelicula):
             print('Registro exitoso')
@@ -57,6 +58,7 @@ class Menu:
         
         else:
             print('Registro fail')
+            input()
 
     def listar_pelicula(self):
         system("clear")
@@ -74,8 +76,32 @@ class Menu:
         codigo = input('Digite el numero de la pelicula: ')
         if self.videoclub.eliminar_pelicula(codigo):
             print('La pelicula fue eliminada')
+            input()
         else:
             print('La pelicula no fue eliminada')
+            input()
+
+    def alquilar_pelicula(self):
+        codigo_pelicula = input('Ingrese el codigo de la pelicula: ')
+        codigo_socio = input('Ingrese el codigo de la socio: ')
+
+        if self.videoclub.alquilar_pelicula(codigo_pelicula, codigo_socio):
+            print('Alquilada corretamente')
+            input()
+        else:
+            print('La pelicula no se puede alquilar')
+            input()
+
+    def devolver_pelicula(self):
+        codigo_pelicula = input('Ingrese el codigo de la pelicula: ')
+        codigo_socio = input('Ingrese el codigo de la socio: ')
+
+        if self.videoclub.devolver_pelicula(codigo_pelicula, codigo_socio):
+            print('La pelicula se devolvio corretamente')
+            input()
+        else:
+            print('La pelicula no se puede devolver')
+            input()
 
 
 
@@ -93,7 +119,9 @@ class Menu:
             print('4: Crear Pelicula')
             print('5: Listar Peliculas')
             print('6: Eliminar Pelicula')
-            print('7: Salir')
+            print('7: Prestar Pelicula')
+            print('8: Devolver Pelicula')
+            print('9: Salir')
 
             try:
                 op = int(input('Digite la opcion: '))
@@ -115,8 +143,14 @@ class Menu:
 
                 elif op == 6:
                     self.eliminar_pelicula()
-
+                
                 elif op == 7:
+                    self.alquilar_pelicula()
+
+                elif op == 8:
+                    self.devolver_pelicula()
+
+                elif op == 9:
                     break
 
                 else:

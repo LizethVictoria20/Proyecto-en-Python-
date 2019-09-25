@@ -55,3 +55,29 @@ class Videoclub():
             del(self.peliculas[pos])
             return True
         return False
+
+
+    #======ALQUILAR PELICULA========#
+    def alquilar_pelicula(self, codigo_pelicula, codigo_socio):
+        pos_pelicula = self.buscar_pelicula(codigo_pelicula)
+        pos_socio = self.buscar_socio(codigo_socio)
+        if self.peliculas[pos_pelicula].alquilada == None:
+            if pos_pelicula != -1 and pos_socio != -1:
+                self.peliculas[pos_pelicula].alquilada = 'Alquilada'
+                return True
+            else:
+                return False
+        else:
+            return False
+
+    def devolver_pelicula(self, codigo_pelicula, codigo_socio):
+        pos_pelicula = self.buscar_pelicula(codigo_pelicula)
+        pos_socio = self.buscar_socio(codigo_socio)
+        if self.peliculas[pos_pelicula].alquilada != None:
+            if pos_pelicula != -1 and pos_socio != -1:
+                self.peliculas[pos_pelicula].alquilada = None
+                return True
+            else:
+                return False
+        else:
+            return False
