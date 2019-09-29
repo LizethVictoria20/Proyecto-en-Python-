@@ -1,26 +1,26 @@
 class Laboratorio:
     def __init__(self, nombre, codigo, capacidad):
-        self.__nombre = nombre
-        self.__codigo = codigo
-        self.__capacidad = capacidad 
+        self.nombre = nombre
+        self.codigo = codigo
+        self.capacidad = capacidad 
 
     def set_nombre(self, nombre):
-        self.__nombre = nombre
+        self.nombre = nombre
 
     def get_nombre(self, nombre):
-        return self.__nombre 
+        return self.nombre 
 
     def set_codigo(self, codigo):
-        self.__codigo = codigo
+        self.codigo = codigo
 
     def get_codigo(self):
-        return self.__codigo
+        return self.codigo
 
     def set_capacidad(self, capacidad):
-        self.__capacidad = capacidad
+        self.capacidad = capacidad
     
     def get_capacidad(self, capacidad):
-        return self.__capacidad 
+        return self.capacidad 
 
 
 

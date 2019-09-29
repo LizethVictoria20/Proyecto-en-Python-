@@ -22,3 +22,8 @@ class Estudiante:
     def get_codigo(self):
         return self.__codigo
 
+    def visualizar_estudiante(self):
+        print('Nombre: %s' %(self.__nombre))
+        print('Apellido: %s' %(self.__apellido))
+        print('Codigo: %s' %(self.__codigo))
+        
