@@ -17,7 +17,7 @@ class Menu:
 
     #======== ESTUDIANTE ==========#
 
-    def crear_estudiante(self):
+    def adicionar_estudiante(self):
         system('clear')
         print('Crear estudiante')
 
@@ -27,15 +27,15 @@ class Menu:
 
         estudiante = Estudiante(nombre_estudiante, apellido_estudiante, codigo_estudiante)
 
-        self.colegio.adicionar_estudiante(estudiante)
+        if self.colegio.adicionar_estudiante(estudiante):
 
-        print('El estudiante fue creado de forma exitosa')
-        input()
+            print('El estudiante fue creado de forma exitosa')
+            input()
 
 
     #======= LABORATORIO ========#
 
-    def crear_laboratorio(self):
+    def agregar_laboratorio(self):
         system('clear')
         print('Crear laboratorio')
 
@@ -45,9 +45,9 @@ class Menu:
 
         laboratorio = Laboratorio(nombre_laboratorio, codigo_laboratorio, capacidad_laboratorio)
 
-        self.colegio.agregar_laboratorio(laboratorio)
-        print('El laboratorio fue creado de forma exitosa')
-        input()
+        if self.colegio.agregar_laboratorio(laboratorio):
+            print('El laboratorio fue creado de forma exitosa')
+            input()
 
     #=========ASISTENCIA LABORATORIO============#
     def crear_asistencia_laboratorio(self):
@@ -187,10 +187,10 @@ class Menu:
                 self.archivoColegio.guardar(self.colegio)
 
                 if op == 1:
-                    self.crear_estudiante()
+                    self.adicionar_estudiante()
 
                 elif op == 2:
-                    self.crear_laboratorio()
+                    self.agregar_laboratorio()
 
                 elif op == 3:
                     self.crear_asistencia_laboratorio()

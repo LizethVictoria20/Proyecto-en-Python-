@@ -45,7 +45,7 @@ class Colegio:
 
         for asistencia in self.__asistencias:
             for estudiante in asistencia.get_estudiantes():
-                if estudiante.get_codigo() == codigo_estudiante
+                if estudiante.get_codigo() == codigo_estudiante:
                     asistencia_laboratorio.append(asistencia)
         return asistencia_laboratorio
 
